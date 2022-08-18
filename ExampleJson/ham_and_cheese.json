@@ -1,0 +1,102 @@
+{
+  "recipe": {
+    "id": 1,
+    "title": "Ham and Cheese Sandwich",
+    "prepMinutes": 5,
+    "cookMinutes": 0,
+    "serves": 1
+  },
+  "ingredientQuantityModels": [
+    {
+      "ingredientQuantity": {
+        "id": 1,
+        "recipeId": 1,
+        "ingredientId": 1,
+        "quantity": 30,
+        "unitOfMeasure": 0
+      },
+      "ingredient": {
+        "id": 1,
+        "name": "Cheese"
+      }
+    },
+    {
+      "ingredientQuantity": {
+        "id": 2,
+        "recipeId": 1,
+        "ingredientId": 2,
+        "quantity": 50,
+        "unitOfMeasure": 0
+      },
+      "ingredient": {
+        "id": 2,
+        "name": "Waffer thin ham"
+      }
+    },
+    {
+      "ingredientQuantity": {
+        "id": 3,
+        "recipeId": 1,
+        "ingredientId": 3,
+        "quantity": 100,
+        "unitOfMeasure": 0
+      },
+      "ingredient": {
+        "id": 3,
+        "name": "Wholemeal Bread"
+      }
+    },
+    {
+      "ingredientQuantity": {
+        "id": 4,
+        "recipeId": 1,
+        "ingredientId": 4,
+        "quantity": 50,
+        "unitOfMeasure": 0
+      },
+      "ingredient": {
+        "id": 4,
+        "name": "Slightly salted butter"
+      }
+    },
+    {
+      "ingredientQuantity": {
+        "id": 5,
+        "recipeId": 1,
+        "ingredientId": 5,
+        "quantity": 1,
+        "unitOfMeasure": 7
+      },
+      "ingredient": {
+        "id": 5,
+        "name": "Light mayonnaise"
+      }
+    }
+  ],
+  "recipeSteps": [
+    {
+      "id": 1,
+      "recipeId": 1,
+      "stepOrder": 1,
+      "stepText": "Butter the bread"
+    },
+    {
+      "id": 2,
+      "recipeId": 1,
+      "stepOrder": 2,
+      "stepText": "Put the ham on the bread"
+    },
+    {
+      "id": 3,
+      "recipeId": 1,
+      "stepOrder": 3,
+      "stepText": "Put the cheese on the bread"
+    },
+    {
+      "id": 4,
+      "recipeId": 1,
+      "stepOrder": 4,
+      "stepText": "Spread the mayonnaise on one slice"
+    }
+  ]
+}

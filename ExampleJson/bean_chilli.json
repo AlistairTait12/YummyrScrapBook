@@ -1,0 +1,186 @@
+{
+  "recipe": {
+      "id": 2,
+      "title": "Bean Chilli",
+      "prepMinutes": 10,
+      "cookMinutes": 20,
+      "serves": 4
+  },
+  "ingredientQuantityModels": [
+      {
+          "ingredientQuantity": {
+              "id": 6,
+              "recipeId": 2,
+              "ingredientId": 6,
+              "quantity": 400,
+              "unitOfMeasure": 0
+          },
+          "ingredient": {
+              "id": 6,
+              "name": "Mixed beans"
+          }
+      },
+      {
+          "ingredientQuantity": {
+              "id": 7,
+              "recipeId": 2,
+              "ingredientId": 7,
+              "quantity": 400,
+              "unitOfMeasure": 0
+          },
+          "ingredient": {
+              "id": 7,
+              "name": "Baked beans"
+          }
+      },
+      {
+          "ingredientQuantity": {
+              "id": 8,
+              "recipeId": 2,
+              "ingredientId": 8,
+              "quantity": 400,
+              "unitOfMeasure": 0
+          },
+          "ingredient": {
+              "id": 8,
+              "name": "Chopped tomatoes"
+          }
+      },
+      {
+          "ingredientQuantity": {
+              "id": 9,
+              "recipeId": 2,
+              "ingredientId": 9,
+              "quantity": 1,
+              "unitOfMeasure": 8
+          },
+          "ingredient": {
+              "id": 9,
+              "name": "Tomato puree"
+          }
+      },
+      {
+          "ingredientQuantity": {
+              "id": 10,
+              "recipeId": 2,
+              "ingredientId": 10,
+              "quantity": 50,
+              "unitOfMeasure": 0
+          },
+          "ingredient": {
+              "id": 10,
+              "name": "Onions"
+          }
+      },
+      {
+          "ingredientQuantity": {
+              "id": 11,
+              "recipeId": 2,
+              "ingredientId": 11,
+              "quantity": 100,
+              "unitOfMeasure": 0
+          },
+          "ingredient": {
+              "id": 11,
+              "name": "Peppers"
+          }
+      },
+      {
+          "ingredientQuantity": {
+              "id": 12,
+              "recipeId": 2,
+              "ingredientId": 12,
+              "quantity": 1,
+              "unitOfMeasure": 7
+          },
+          "ingredient": {
+              "id": 12,
+              "name": "Smoked paprika"
+          }
+      },
+      {
+          "ingredientQuantity": {
+              "id": 13,
+              "recipeId": 2,
+              "ingredientId": 13,
+              "quantity": 1,
+              "unitOfMeasure": 7
+          },
+          "ingredient": {
+              "id": 13,
+              "name": "Cumin"
+          }
+      },
+      {
+          "ingredientQuantity": {
+              "id": 14,
+              "recipeId": 2,
+              "ingredientId": 14,
+              "quantity": 1,
+              "unitOfMeasure": 7
+          },
+          "ingredient": {
+              "id": 14,
+              "name": "Chilli powder"
+          }
+      },
+      {
+          "ingredientQuantity": {
+              "id": 15,
+              "recipeId": 2,
+              "ingredientId": 15,
+              "quantity": 1,
+              "unitOfMeasure": 8
+          },
+          "ingredient": {
+              "id": 15,
+              "name": "Olive oil"
+          }
+      },
+      {
+          "ingredientQuantity": {
+              "id": 16,
+              "recipeId": 2,
+              "ingredientId": 1,
+              "quantity": 100,
+              "unitOfMeasure": 0
+          },
+          "ingredient": {
+              "id": 1,
+              "name": "Cheese"
+          }
+      }
+  ],
+  "recipeSteps": [
+      {
+          "id": 5,
+          "recipeId": 2,
+          "stepOrder": 1,
+          "stepText": "Fry the onions and peppers in the olive oil for about 5 minutes"
+      },
+      {
+          "id": 6,
+          "recipeId": 2,
+          "stepOrder": 2,
+          "stepText": "Drain the mixed beans and fry with the onions and pepepers for a further 2 minutes"
+      },
+      {
+          "id": 7,
+          "recipeId": 2,
+          "stepOrder": 3,
+          "stepText": "Add the baked beans, chopped tomatoes, cumin, chilli powder and smoked paprika and simmer for 7 minutes"
+      },
+      {
+          "id": 8,
+          "recipeId": 2,
+          "stepOrder": 4,
+          "stepText": "Add the tomato puree and simmer for the remaining time"
+      },
+      {
+          "id": 9,
+          "recipeId": 2,
+          "stepOrder": 5,
+          "stepText": "Serve with the grated cheese and rice"
+      }
+  ]
+}
