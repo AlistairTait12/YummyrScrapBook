@@ -3,7 +3,6 @@ INSERT INTO Recipes
 VALUES
 ('Bean Chilli', 10, 20, 4)
 
--- Cheese already exists
 INSERT INTO Ingredients
 (Name)
 VALUES
@@ -16,7 +15,8 @@ VALUES
 ('Smoked paprika'),
 ('Cumin'),
 ('Chilli powder'),
-('Olive oil')
+('Olive oil'),
+('Cheese')
 
 -- Ingredient Quantities
 INSERT INTO IngredientQuantities
