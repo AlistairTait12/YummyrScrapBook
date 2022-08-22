@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "432e00f1-d36a-4609-9aec-e82b30286833",
+		"name": "YummyrApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19480666"
+	},
+	"item": [
+		{
+			"name": "GetRecipes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const recipeSchema = {\r",
+							"  \"description\": \"basic information about a recipe\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": { \"type\": \"number\" },\r",
+							"    \"title\": { \"type\": \"string\" },\r",
+							"    \"prepMinutes\": { \"type\": \"number\" },\r",
+							"    \"cookMinutes\": { \"type\": \"number\" },\r",
+							"    \"serves\": { \"type\": \"number\" }\r",
+							"  },\r",
+							"  \"required\": [\"id\", \"title\"]\r",
+							"}\r",
+							"\r",
+							"const ingredientQuantitySchema = {\r",
+							"  \"description\": \"a relationship between an ingredient and its quantity in the recipe\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"ingredientQuantity\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"id\": { \"type\": \"number\" },\r",
+							"        \"recipeId\": { \"type\": \"number\" },\r",
+							"        \"ingredientId\": { \"type\": \"number\" },\r",
+							"        \"quantity\": { \"type\": \"number\" },\r",
+							"        \"unitOfMeasure\": { \"type\": \"number\" }\r",
+							"      },\r",
+							"      \"required\": [ \"id\", \"recipeId\", \"ingredientId\", \"quantity\", \"unitOfMeasure\" ]\r",
+							"    },\r",
+							"    \"ingredient\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"id\": { \"type\": \"number\" },\r",
+							"        \"name\": { \"type\": \"string\" }\r",
+							"      }\r",
+							"    }\r",
+							"  }\r",
+							"}\r",
+							"\r",
+							"const recipeStepSchema = {\r",
+							"    \"description\": \"an object containing information about a step in a recipe\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\": {\r",
+							"        \"id\": { \"type\": \"number\" },\r",
+							"        \"recipeId\": { \"type\": \"number\" },\r",
+							"        \"stepOrder\": { \"type\": \"number\" },\r",
+							"        \"stepText\": { \"type\": \"string\" }\r",
+							"    },\r",
+							"    \"required\": [ \"id\", \"recipeId\", \"stepOrder\", \"stepText\" ]\r",
+							"}\r",
+							"\r",
+							"pm.test(\"GetRecipiesReturnsStatus200\", () => {\r",
+							"    // Assert\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"RecipeInfoInResponseMatchesSchema\", () => {\r",
+							"    // Arrange\r",
+							"    const recipeInfo = pm.response.json().recipe;\r",
+							"\r",
+							"    // Assert\r",
+							"    pm.expect(recipeInfo).to.have.jsonSchema(recipeSchema);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"IngredientQuantityModelsInResponseIsAnArray\", () => {\r",
+							"    // Assert\r",
+							"    pm.expect(pm.response.json().ingredientQuantityModels).to.be.an(\"array\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"IngredientQuantityModelsInResponseIsAnArrayOfObjectsMatchingIngredientQuantitySchema\", () => {\r",
+							"    // Assert\r",
+							"    pm.response.json().ingredientQuantityModels.forEach((element) => {\r",
+							"        pm.expect(element).to.have.jsonSchema(ingredientQuantitySchema);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"RecipeStepsInResponseIsAnArray\", () => {\r",
+							"    // Assert\r",
+							"    pm.expect(pm.response.json().recipeSteps).to.be.an(\"array\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"RecipeStepsInResponseIsAnArrayOfObjectsEachMatchingRecipeStepSchema\", () => {\r",
+							"    // Assert\r",
+							"    pm.response.json().recipeSteps.forEach((element) => {\r",
+							"        pm.expect(element).to.have.jsonSchema(recipeStepSchema);\r",
+							"    });\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7253/api/recipes/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7253",
+					"path": [
+						"api",
+						"recipes",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
