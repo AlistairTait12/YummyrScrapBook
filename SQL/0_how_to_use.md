@@ -1,0 +1,2 @@
+# What is this folder?
+It is for getting some data into the database. _Please_ enter the sql into the database in the order of the files, as IngredientQuantities and RecipeSteps depend on the recipe and ingredient records being in the correct order.

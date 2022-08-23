@@ -6,6 +6,7 @@ VALUES
 INSERT INTO Ingredients
 (Name)
 VALUES
+-- Mixed beans is Id 6 at this point
 ('Mixed beans'),
 ('Baked beans'),
 ('Chopped tomatoes'),
@@ -15,10 +16,8 @@ VALUES
 ('Smoked paprika'),
 ('Cumin'),
 ('Chilli powder'),
-('Olive oil'),
-('Cheese')
+('Olive oil')
 
--- Ingredient Quantities
 INSERT INTO IngredientQuantities
 (RecipeId, IngredientId, Quantity, UnitOfMeasure)
 VALUES
@@ -34,7 +33,6 @@ VALUES
 (2, 15, 1, 'Tbsp'),
 (2, 1, 100, 'G')
 
--- Recipe Steps
 INSERT INTO RecipeSteps
 (RecipeId, StepOrder, StepText)
 VALUES
