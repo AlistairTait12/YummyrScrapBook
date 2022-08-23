@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "GetRecipes",
+			"name": "Recipe/id",
 			"event": [
 				{
 					"listen": "test",
@@ -63,12 +63,12 @@
 							"    \"required\": [ \"id\", \"recipeId\", \"stepOrder\", \"stepText\" ]\r",
 							"}\r",
 							"\r",
-							"pm.test(\"GetRecipiesReturnsStatus200\", () => {\r",
+							"pm.test('GetRecipiesReturnsStatus200', () => {\r",
 							"    // Assert\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"RecipeInfoInResponseMatchesSchema\", () => {\r",
+							"pm.test('RecipeInfoInResponseMatchesSchema', () => {\r",
 							"    // Arrange\r",
 							"    const recipeInfo = pm.response.json().recipe;\r",
 							"\r",
@@ -76,24 +76,24 @@
 							"    pm.expect(recipeInfo).to.have.jsonSchema(recipeSchema);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"IngredientQuantityModelsInResponseIsAnArray\", () => {\r",
+							"pm.test('IngredientQuantityModelsInResponseIsAnArray', () => {\r",
 							"    // Assert\r",
 							"    pm.expect(pm.response.json().ingredientQuantityModels).to.be.an(\"array\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"IngredientQuantityModelsInResponseIsAnArrayOfObjectsMatchingIngredientQuantitySchema\", () => {\r",
+							"pm.test('IngredientQuantityModelsInResponseIsAnArrayOfObjectsMatchingIngredientQuantitySchema', () => {\r",
 							"    // Assert\r",
 							"    pm.response.json().ingredientQuantityModels.forEach((element) => {\r",
 							"        pm.expect(element).to.have.jsonSchema(ingredientQuantitySchema);\r",
 							"    });\r",
 							"});\r",
 							"\r",
-							"pm.test(\"RecipeStepsInResponseIsAnArray\", () => {\r",
+							"pm.test('RecipeStepsInResponseIsAnArray', () => {\r",
 							"    // Assert\r",
 							"    pm.expect(pm.response.json().recipeSteps).to.be.an(\"array\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"RecipeStepsInResponseIsAnArrayOfObjectsEachMatchingRecipeStepSchema\", () => {\r",
+							"pm.test('RecipeStepsInResponseIsAnArrayOfObjectsEachMatchingRecipeStepSchema', () => {\r",
 							"    // Assert\r",
 							"    pm.response.json().recipeSteps.forEach((element) => {\r",
 							"        pm.expect(element).to.have.jsonSchema(recipeStepSchema);\r",
@@ -117,7 +117,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:7253/api/recipes/2",
+					"raw": "https://localhost:7253/api/recipes/3",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -126,7 +126,92 @@
 					"path": [
 						"api",
 						"recipes",
-						"2"
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ingredients",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const ingredientSchema = {\r",
+							"    \"description\": \"A simple model depicting an ingredient and its Id in the database\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\": {\r",
+							"        \"id\": { \"type\": \"number\" },\r",
+							"        \"name\": { \"type\": \"string\" }\r",
+							"    },\r",
+							"    \"required\": [ \"id\", \"name\" ]\r",
+							"}\r",
+							"\r",
+							"pm.test('GetIngredientsHasStatus200', () => {\r",
+							"    // Assert\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('GetIngredientsReturnsAnArray', () => {\r",
+							"    // Assert\r",
+							"    pm.expect(pm.response.json()).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test('GetIngredientsReturnsAnArrayOfObjectsEachMatchingTheIngredientSchema', () => {\r",
+							"    // Assert\r",
+							"    pm.response.json().forEach((element) => {\r",
+							"        pm.expect(element).to.have.jsonSchema(ingredientSchema);\r",
+							"    })\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7253/api/ingredients",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7253",
+					"path": [
+						"api",
+						"ingredients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostIngredient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Avocado\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7253/api/ingredients",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7253",
+					"path": [
+						"api",
+						"ingredients"
 					]
 				}
 			},
