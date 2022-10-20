@@ -1,11 +1,72 @@
 {
 	"info": {
-		"_postman_id": "71c905f9-89ff-4cb6-b9af-20fbefc0f49f",
+		"_postman_id": "432e00f1-d36a-4609-9aec-e82b30286833",
 		"name": "YummyrApi",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "15162222"
+		"_exporter_id": "19480666"
 	},
 	"item": [
+		{
+			"name": "Recipes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const recipeSchema = {\r",
+							"  \"description\": \"basic information about a recipe\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": { \"type\": \"number\" },\r",
+							"    \"title\": { \"type\": \"string\" },\r",
+							"    \"prepMinutes\": { \"type\": \"number\" },\r",
+							"    \"cookMinutes\": { \"type\": \"number\" },\r",
+							"    \"serves\": { \"type\": \"number\" }\r",
+							"  },\r",
+							"  \"required\": [\"id\", \"title\"]\r",
+							"}\r",
+							"\r",
+							"pm.test('GetRecipesReturnsStatus200', () => {\r",
+							"    // Assert\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('GetRecipesReturnsAnArray', () => {\r",
+							"    // Assert\r",
+							"    pm.expect(pm.response.json()).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test('GetRecipesReturnsArrayWhereEachElementMatchesRecipeSchema', () => {\r",
+							"    // Assert\r",
+							"    pm.response.json().forEach(element => {\r",
+							"        pm.expect(element).to.have.jsonSchema(recipeSchema);\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7253/api/recipes/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7253",
+					"path": [
+						"api",
+						"recipes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "Recipe/id",
 			"event": [
@@ -63,7 +124,7 @@
 							"    \"required\": [ \"id\", \"recipeId\", \"stepOrder\", \"stepText\" ]\r",
 							"}\r",
 							"\r",
-							"pm.test('GetRecipiesReturnsStatus200', () => {\r",
+							"pm.test('GetRecipeReturnsStatus200', () => {\r",
 							"    // Assert\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
@@ -78,7 +139,7 @@
 							"\r",
 							"pm.test('IngredientQuantityModelsInResponseIsAnArray', () => {\r",
 							"    // Assert\r",
-							"    pm.expect(pm.response.json().ingredientQuantityModels).to.be.an(\"array\");\r",
+							"    pm.expect(pm.response.json().ingredientQuantityModels).to.be.an('array');\r",
 							"});\r",
 							"\r",
 							"pm.test('IngredientQuantityModelsInResponseIsAnArrayOfObjectsMatchingIngredientQuantitySchema', () => {\r",
@@ -90,7 +151,7 @@
 							"\r",
 							"pm.test('RecipeStepsInResponseIsAnArray', () => {\r",
 							"    // Assert\r",
-							"    pm.expect(pm.response.json().recipeSteps).to.be.an(\"array\");\r",
+							"    pm.expect(pm.response.json().recipeSteps).to.be.an('array');\r",
 							"});\r",
 							"\r",
 							"pm.test('RecipeStepsInResponseIsAnArrayOfObjectsEachMatchingRecipeStepSchema', () => {\r",
@@ -117,7 +178,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:7253/api/recipes/3",
+					"raw": "https://localhost:7253/api/recipes/5",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -126,7 +187,7 @@
 					"path": [
 						"api",
 						"recipes",
-						"3"
+						"5"
 					]
 				}
 			},
@@ -195,7 +256,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Avocado\"\r\n}",
+					"raw": "{\r\n    \"name\": \"ham\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -218,39 +279,21 @@
 			"response": []
 		},
 		{
-			"name": "GetSingleIngredient",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"const ingredientSchema = {\r",
-							"    \"description\": \"A simple model depicting an ingredient and its Id in the database\",\r",
-							"    \"type\": \"object\",\r",
-							"    \"properties\": {\r",
-							"        \"id\": { \"type\": \"number\" },\r",
-							"        \"name\": { \"type\": \"string\" }\r",
-							"    },\r",
-							"    \"required\": [ \"id\", \"name\" ]\r",
-							"}\r",
-							"\r",
-							"pm.test('GetIngredientsWithIdHasOkStatus', () => {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test('GetIngredientsWithIdReturnsASingleObjectMatchingIngredientSchema', () => {\r",
-							"    pm.expect(pm.response.json()).to.have.jsonSchema(ingredientSchema);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
+			"name": "PostRecipe",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"recipe\": {\r\n        \"title\": \"A recipe number two\",\r\n        \"prepMinutes\": 5,\r\n        \"cookMinutes\": 10,\r\n        \"serves\": 2\r\n    },\r\n    \"ingredientQuantityModels\": [\r\n        {\r\n            \"ingredientQuantity\": {\r\n                \"quantity\": 5,\r\n                \"unitOfMeasure\": 0\r\n            },\r\n            \"ingredient\": {\r\n                \"name\": \"Cheese\"\r\n            }\r\n        }\r\n    ],\r\n    \"recipeSteps\": [\r\n        {\r\n            \"stepOrder\": 1,\r\n            \"stepText\": \"make it\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "https://localhost:7253/api/ingredients/1",
+					"raw": "https://localhost:7253/api/recipes",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -258,20 +301,34 @@
 					"port": "7253",
 					"path": [
 						"api",
-						"ingredients",
-						"1"
+						"recipes"
 					]
 				}
 			},
 			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		},
 		{
-			"name": "PostRecipe",
-			"request": {
-				"method": "POST",
-				"header": []
-			},
-			"response": []
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
